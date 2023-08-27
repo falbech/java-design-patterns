@@ -10,7 +10,7 @@ import br.com.alura.store.tax.TaxCalculator;
 public class TaxesTests {
 
 	public static void main(String args[]) {
-		Budget budget = new Budget(new BigDecimal("100"));
+		Budget budget = new Budget(new BigDecimal("100"), 1);
 		TaxCalculator calculator = new TaxCalculator();
 		System.out.println(calculator.calculate(budget, new ICMS()));
 		System.out.println(calculator.calculate(budget, new ISS()));
