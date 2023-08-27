@@ -7,8 +7,8 @@ import br.com.alura.store.budget.Budget;
 public class DiscountCalculator {
 
 	public BigDecimal calculate(Budget budget) {
-		Discount discount = new MultipleItemsDiscount(new HighPriceBasedDiscount(new NoDiscount()));
-		return discount.calculate(budget);
+		Discount discountChain = new MultipleItemsDiscount(new HighPriceBasedDiscount(new NoDiscount()));
+		return discountChain.performCalulation(budget);
 	}
 
 }

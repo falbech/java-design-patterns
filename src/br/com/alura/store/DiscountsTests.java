@@ -14,5 +14,5 @@ public class DiscountsTests {
 		DiscountCalculator calculator = new DiscountCalculator();
 		System.out.println(calculator.calculate(budget));
 		System.out.println(calculator.calculate(budget2));
-	}
+	} 
 }
