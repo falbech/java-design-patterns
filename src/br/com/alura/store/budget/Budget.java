@@ -22,14 +22,7 @@ public class Budget {
 	}
 	
 	public void applyExtraDiscount() {
-		BigDecimal extraDiscount = this.situation.calculateExtraDiscount(this);
-		
-//		if(situation.equals("ANALYZING")) {
-//			extraDiscount = new BigDecimal("0.05");
-//		} else if (situation.equals("APPROVED")) {
-//			extraDiscount = new BigDecimal("0.02");
-//		}
-		
+		BigDecimal extraDiscount = this.situation.calculateExtraDiscount(this);		
 		this.value = this.value.subtract(extraDiscount);
 	}
 	
