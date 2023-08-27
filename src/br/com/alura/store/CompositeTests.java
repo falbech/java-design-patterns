@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import br.com.alura.store.budget.Budget;
 import br.com.alura.store.budget.BudgetItem;
+import br.com.alura.store.budget.BudgetProxy;
 
 public class CompositeTests {
 
@@ -16,6 +17,12 @@ public class CompositeTests {
 		budget.addItem(new BudgetItem(new BigDecimal("500")));
 		budget.addItem(oldBudget);
 		
-		System.out.println(budget.getValue());
+		BudgetProxy proxy = new BudgetProxy(budget);
+		
+		System.out.println(proxy.getValue());
+		System.out.println(proxy.getValue());
+		System.out.println(proxy.getValue());
+		System.out.println(proxy.getValue());
+		System.out.println(proxy.getValue());
 	}
 }

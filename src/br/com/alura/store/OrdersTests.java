@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import br.com.alura.store.order.GenerateOrder;
 import br.com.alura.store.order.GenerateOrderHandler;
+import br.com.alura.store.order.action.OrderLogger;
 import br.com.alura.store.order.action.SaveOrder;
 import br.com.alura.store.order.action.SendOrderEmail;
 
@@ -17,7 +18,7 @@ public class OrdersTests {
 		
 		GenerateOrder orderGenerationData = new GenerateOrder(client, budgetValue, amount);
 		GenerateOrderHandler handler = new GenerateOrderHandler(
-				Arrays.asList(new SaveOrder(), new SendOrderEmail()));
+				Arrays.asList(new SaveOrder(), new SendOrderEmail(), new OrderLogger()));
 		handler.execute(orderGenerationData);
 	}
 }
