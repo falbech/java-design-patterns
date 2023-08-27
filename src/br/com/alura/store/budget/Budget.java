@@ -1,20 +1,22 @@
 package br.com.alura.store.budget;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.alura.store.budget.situation.BudgetSituation;
 import br.com.alura.store.budget.situation.Finished;
 import br.com.alura.store.budget.situation.UnderAnalysis;
 
-public class Budget {
+public class Budget implements Budgetable{
 	
 	private BigDecimal value;
-	private int itemsAmount;
 	private BudgetSituation situation;
+	private List<Budgetable> items;
 
-	public Budget(BigDecimal value, int itemsAmount) {
-		this.value = value;
-		this.itemsAmount = itemsAmount;
+	public Budget() {
+		this.value = BigDecimal.ZERO;
+		this.items = new ArrayList<>();
 		this.situation = new UnderAnalysis();
 	}
 
@@ -48,11 +50,16 @@ public class Budget {
 	}
 
 	public int getItemsAmount() {
-		return itemsAmount;
+		return items.size();
 	}
 
 	public boolean isFinished() {
 		return situation instanceof Finished;
+	}
+	
+	public void addItem(Budgetable item) {
+		this.value = this.value.add(item.getValue());
+		this.items.add(item);
 	}
 
 }

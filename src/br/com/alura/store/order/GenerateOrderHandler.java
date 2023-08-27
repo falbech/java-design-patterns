@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import br.com.alura.store.budget.Budget;
+import br.com.alura.store.budget.BudgetItem;
 import br.com.alura.store.order.action.ActionAfterOrderCreation;
 
 public class GenerateOrderHandler {
@@ -17,7 +18,8 @@ public class GenerateOrderHandler {
 	}
 	
 	public void execute(GenerateOrder data) {
-		Budget budget = new Budget(data.getBudgetValue(), data.getItemsAmount());
+		Budget budget = new Budget();
+		budget.addItem(new BudgetItem(data.getBudgetValue()));
 		Order order = new Order(data.getClient(), LocalDateTime.now(), budget);
 		
 		actions.forEach(action -> action.executeAction(order));
