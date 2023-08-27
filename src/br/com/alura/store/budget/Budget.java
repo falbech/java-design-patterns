@@ -3,6 +3,7 @@ package br.com.alura.store.budget;
 import java.math.BigDecimal;
 
 import br.com.alura.store.budget.situation.BudgetSituation;
+import br.com.alura.store.budget.situation.Finished;
 import br.com.alura.store.budget.situation.UnderAnalysis;
 
 public class Budget {
@@ -48,6 +49,10 @@ public class Budget {
 
 	public int getItemsAmount() {
 		return itemsAmount;
+	}
+
+	public boolean isFinished() {
+		return situation instanceof Finished;
 	}
 
 }
