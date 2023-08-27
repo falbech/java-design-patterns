@@ -4,9 +4,13 @@ import java.math.BigDecimal;
 
 import br.com.alura.store.budget.Budget;
 
-public class ICMS implements Tax {
+public class ICMS extends Tax {
 
-	public BigDecimal calculate(Budget budget) {
+	public ICMS(Tax tax) {
+		super(tax);
+	}
+
+	public BigDecimal performCalculation(Budget budget) {
 		return budget.getValue().multiply(new BigDecimal("0.1"));
 	}
 

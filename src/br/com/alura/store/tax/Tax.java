@@ -4,8 +4,23 @@ import java.math.BigDecimal;
 
 import br.com.alura.store.budget.Budget;
 
-public interface Tax {
+public abstract class Tax {
+	
+	private Tax next;
+	
+	public Tax(Tax tax) {
+		this.next = tax;
+	}
+	
+	protected abstract BigDecimal performCalculation(Budget budget);
 
-	BigDecimal calculate(Budget budget);
+	public BigDecimal calculate(Budget budget) {
+		BigDecimal taxValue = performCalculation(budget);
+		BigDecimal nextTaxValue = BigDecimal.ZERO;
+		if(this.next != null) {
+			nextTaxValue = this.next.performCalculation(budget);
+		}
+		return taxValue.add(nextTaxValue);
+	}
 
 }
